@@ -8,7 +8,6 @@ numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 characters = ['@', '#', '$', '%', '&', '*', '?']
 
-
 number_of_chars = int(input("Enter the length of the password: "))
 
 if number_of_chars % 4 == 0:
@@ -43,6 +42,51 @@ if number_of_chars % 4 == 0:
     print(f'Your new {4 * number_of_times} digits password is: {answer()}')
 
 else:
-    print("Enter a valid length of password, which is also a multiple of 4")
+    # print("Enter a valid length of password, which is also a multiple of 4")
+    quotient = number_of_chars // 4
+    remainder = number_of_chars % 4
+
+    upper1 = random.choice(upper_case)
+    lower1 = random.choice(lower_case)
+    numeric1 = random.choice(numbers)
+    chars1 = random.choice(characters)
+
+    random_elements_list1 = [upper1, lower1, numeric1, chars1]
+    random.shuffle(random_elements_list1)  # shuffled list
+
+    z = random.sample(random_elements_list1, remainder)
 
 
+    def shuffle():
+        upper = random.choice(upper_case)
+        lower = random.choice(lower_case)
+        numeric = random.choice(numbers)
+        chars = random.choice(characters)
+
+        random_elements_list = [upper, lower, numeric, chars]
+        random.shuffle(random_elements_list)  # shuffled list
+
+        # z = random.sample(random_elements_list, remainder)
+        # print(f"{remainder} extra digits are: {z}")
+
+        return random_elements_list
+
+
+    def answer():
+        a = []
+        b = []
+
+        for i in range(quotient):
+            a.append(shuffle())
+        # return a
+
+        for i in a:
+            b.extend(i)
+
+        b += z
+        x = ''.join(b)
+
+        return x
+
+
+    print(f'Your new {number_of_chars} digit password is: {answer()}')
