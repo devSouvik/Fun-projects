@@ -1,6 +1,10 @@
 # Word cloud image generator
 This will create a word cloud generated from web scrapping on the topic input by user. Users can select background color according to their choice.
 
+## source of words: 
+
+Words used in the images are gathered from web scrapping of pages from google search
+
 ## Example
 
 This image was generated for the keyword "**India**"
